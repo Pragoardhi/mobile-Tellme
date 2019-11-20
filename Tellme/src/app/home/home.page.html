@@ -1,11 +1,25 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar>
     <ion-title>
-      Google Maps
+      Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div #mapElement id="map"></div>
+  <ion-card (click)="onForm()">
+    <ion-card-header>
+      <ion-card-title>Kerja Kelompok</ion-card-title>
+      <ion-card-subtitle>Summarecon Digital Center</ion-card-subtitle>
+    </ion-card-header>
+      
+    <ion-card-content>
+      <p>Ada kerja kelompok di kantin SDC</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="onForm()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

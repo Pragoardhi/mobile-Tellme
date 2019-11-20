@@ -1,26 +1,16 @@
-// import { google } from '@google/maps';
-import { Component, ViewChild, AfterContentInit, OnInit } from '@angular/core';
-// declare var google: any;
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit, AfterContentInit{
-  map;
-  @ViewChild('mapElement', { static: true }) mapElement;
-  constructor() {} 
-  
-  ngOnInit() : void{ 
+export class HomePage {
+
+  constructor(private router: Router) {}
+
+  onForm(){
+    this.router.navigateByUrl('/form-schedule');
   }
-
-  ngAfterContentInit() : void{
-    this.map = new google.maps.Map(
-      this.mapElement.nativeElement,{
-        center: {lat: -34.397, lng: 150.664},
-        zoom: 8
-      })
-  } 
-
 }

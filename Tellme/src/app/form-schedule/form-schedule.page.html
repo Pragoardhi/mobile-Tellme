@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Atur Penjadwalan</ion-title>
+    <ion-buttons slot="end">
+        <ion-button (click)="onBackHome()">
+          <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <!-- title -->
+    <ion-label position="floating">Title</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item>
+    <!-- tanggal awal -->
+    <ion-label>Start Date</ion-label>
+    <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2005" max="2100" value="2019-10-27"></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <!-- tanggal akhir -->
+    <ion-label>End Date</ion-label>
+    <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2005"max="2100" value="2019-10-28"></ion-datetime>
+  </ion-item>
+  <ion-item>
+      <!-- note -->
+      <ion-label position="floating">Note</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+  <br>
+  <div text-center>
+    <ion-button shape="round" fill="outline" (click)="onLocation()">Choose Location</ion-button>
+  </div>
+  <br>
+  <div text-center>
+    <ion-button shape="round" fill="outline" color="danger" (click)="onBackHome()">Submit</ion-button>
+  </div>  
+    
+</ion-content>
+
+
+

@@ -1,7 +1,5 @@
 {
   "name": "Tell Me",
-  "integrations": {
-    "cordova": {}
-  },
+  "integrations": {},
   "type": "angular"
 }
