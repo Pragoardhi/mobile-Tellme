@@ -1,6 +1,7 @@
 import { Component, ViewChild, AfterContentInit, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { UserService } from '../user.service';
 declare var google;
 
 @Component({
@@ -12,10 +13,14 @@ export class LocationPage implements OnInit, AfterContentInit {
   
   map;
   @ViewChild('mapElement', { static: true }) mapElement;
+  public isLogin =  this.userSvc.getUID();
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userSvc: UserService) { }
 
   ngOnInit() {
+    if(!this.isLogin){
+      this.router.navigateByUrl('/auth');
+    }
   }
 
   onBackForm(){

@@ -1,3 +1,4 @@
+import { UserService } from './../../user.service';
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
@@ -11,7 +12,7 @@ import { AuthService } from './../auth.service';
 })
 export class SignupPage implements OnInit {
 
-  constructor(private modalCtrl: ModalController, private authSvc: AuthService) { }
+  constructor(private userSvc: UserService, private modalCtrl: ModalController, private authSvc: AuthService) { }
 
   ngOnInit() {
   }
@@ -20,6 +21,7 @@ export class SignupPage implements OnInit {
     console.log(f.value);
     this.authSvc.signup(f.value.email, f.value.pwd).subscribe(resp => {
       console.log(resp);
+      this.userSvc.setUser(resp.email, resp.localId);
       this.modalCtrl.dismiss();
     });
     // this.authSvc.signup(f.value.email, f.value.pwd).subscribe(resp => {

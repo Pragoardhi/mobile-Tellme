@@ -25,6 +25,16 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  get isAuthenticate(){
+    return this._user.asObservable().pipe(map(user => {
+      if(user){
+        return !!user._token;
+      }else{
+        return null;
+      }
+    }));
+  }
+
   signup(email: string, password: string) {
     return this.http.post<AuthResponseData>(
       `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.firebase.apiKey}`,
@@ -54,5 +64,9 @@ export class AuthService {
       password,
       returnSecureToken: true
     });
+  }
+
+  logout(){
+    this._user.next(null);
   }
 }

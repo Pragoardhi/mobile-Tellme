@@ -5,7 +5,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   { path: 'form-schedule', loadChildren: './form-schedule/form-schedule.module#FormSchedulePageModule' },
-  { path: 'form-schedule/id', loadChildren: './form-schedule/form-schedule.module#FormSchedulePageModule' },
+  { path: 'form-schedule/:id', loadChildren: './form-schedule/form-schedule.module#FormSchedulePageModule' },
   { path: 'location', loadChildren: './location/location.module#LocationPageModule' },
   { path: 'auth', loadChildren: './auth/auth.module#AuthPageModule' },
   { path: 'signup', loadChildren: './auth/signup/signup.module#SignupPageModule' },
