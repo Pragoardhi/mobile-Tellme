@@ -32,12 +32,7 @@
       <ion-input [(ngModel)]="todo.note"></ion-input>
     </ion-item>
   <br>
-  <app-location-picker></app-location-picker>
-  <div *ngFor="let data of address" >
-    <p>
-      lat = {{ data }}
-    </p>
-  </div>
+  <app-location-picker text-center></app-location-picker>
   <br>
   <div text-center>
     <ion-button shape="round" fill="outline" color="danger" (click)="saveTodo()">Submit</ion-button>

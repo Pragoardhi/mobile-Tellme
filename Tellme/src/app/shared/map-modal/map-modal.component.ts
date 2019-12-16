@@ -1,5 +1,6 @@
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Plugins, Capacitor } from '@capacitor/core'
 
 @Component({
   selector: 'app-map-modal',
@@ -7,11 +8,11 @@ import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, Renderer2 } fr
   styleUrls: ['./map-modal.component.scss'],
 })
 export class MapModalComponent implements OnInit, AfterViewInit {
-  lat = 51.678418;
-  lng = 7.809007;
+  lat = 35.6595202;
+  lng = 139.6989984;
   @ViewChild('map', {static: false}) mapElementRef: ElementRef;
 
-  constructor(private modalCtrl: ModalController, private renderer: Renderer2) { }
+  constructor(private modalCtrl: ModalController, private renderer: Renderer2, private alertCtrl: AlertController) { }
 
   ngOnInit() {}
 
@@ -29,6 +30,15 @@ export class MapModalComponent implements OnInit, AfterViewInit {
       googleMaps.event.addListenerOnce(map, 'idle', () => {
         this.renderer.addClass(mapElement, 'visible');
       });
+
+      this.getLocation().then(Loc => {
+        if(!Loc){
+          const marker = new googleMaps.Marker({ position: { lat: this.lat, lng: this.lng }, map });    
+        } else {
+          const marker = new googleMaps.Marker({ position: { lat: Loc.latitude, lng: Loc.longitude }, map });
+          map.panTo(new googleMaps.LatLng(Loc.latitude, Loc.longitude));
+        }
+      })
       const marker = new googleMaps.Marker({ position: { lat: this.lat, lng: this.lng }, map });
       console.log(marker);
       map.addListener('click', event => {
@@ -41,6 +51,26 @@ export class MapModalComponent implements OnInit, AfterViewInit {
     }).catch(err => {
       console.log(err);
     }); 
+  }
+
+  async presentAlert(){
+    const alert  = await this.alertCtrl.create({
+      header: 'Alert',
+      subHeader: 'Failed',
+      message: 'Could not get user location.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  async getLocation(){
+    if(!Capacitor.isPluginAvailable('Geolocation')){
+      this.presentAlert();
+      return null;
+    }
+    const coordinates = await Plugins.Geolocation.getCurrentPosition();
+    return coordinates.coords;
   }
 
   // onChooseLocation(event: any){
