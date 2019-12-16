@@ -2,6 +2,7 @@ import { Todo, TodoService } from './../services/todo.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { PlaceService } from './place.service';
 
 @Component({
   selector: 'app-form-schedule',
@@ -9,6 +10,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./form-schedule.page.scss'],
 })
 export class FormSchedulePage implements OnInit {
+  address = '';
 
   todo: Todo = {
     title: 'mantap',
@@ -20,11 +22,17 @@ export class FormSchedulePage implements OnInit {
   constructor(
     private router: Router, 
     private todoService:TodoService,
-    private navController: NavController) { }
+    private navController: NavController,
+    private PlaceSvc: PlaceService) { }
 
   todoId = null;
 
   ngOnInit() {
+    this.PlaceSvc.getAddress().subscribe(
+      currAddress => {
+        this.address = currAddress;
+      }
+    )
   }
 
   async saveTodo(){

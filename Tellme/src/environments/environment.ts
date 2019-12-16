@@ -13,7 +13,9 @@ export const environment = {
     messagingSenderId: "709041996858",
     appId: "1:709041996858:web:c11d148cc21b206d4a6103",
     measurementId: "G-QSXC5QCYBK"
-  }
+  },
+  mapsAPIKey: 'AIzaSyCcX5UrXGP_qbsVLsdpUy3hdnyNRq1nmyU'
+
   // firebaseAPIKey: 'AIzaSyBm3u1cOYyrcfPDE0upK8C3KnOeIlY0N1Q'
 };
 
