@@ -33,6 +33,7 @@
     </ion-item>
   <br>
   <app-location-picker text-center></app-location-picker>
+  <ion-label *ngIf="address" >Address: {{address}}</ion-label>
   <br>
   <div text-center>
     <ion-button shape="round" fill="outline" color="danger" (click)="saveTodo()">Submit</ion-button>

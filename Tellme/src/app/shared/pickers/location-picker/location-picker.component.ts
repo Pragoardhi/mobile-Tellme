@@ -23,9 +23,9 @@ export class LocationPickerComponent implements OnInit {
       component: MapModalComponent
     });
     modal.onDidDismiss().then((modalData) => {
-      console.log(modalData.data);
+      console.log(typeof modalData.data.lat);
       this.getAddress(modalData.data.lat, modalData.data.lng).subscribe((address) => {
-        this.placeSvc.setAddress(address);
+        this.placeSvc.setAddress(modalData.data.lat, modalData.data.lng);
         console.log(address);
       });
     });

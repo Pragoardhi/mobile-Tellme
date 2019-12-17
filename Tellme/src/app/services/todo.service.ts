@@ -9,6 +9,8 @@ export interface Todo{
   startDate: number;
   endDate: number;
   note: string;
+  lat: number;
+  lng: number;
 }
 
 @Injectable({

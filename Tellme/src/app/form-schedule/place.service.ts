@@ -6,14 +6,22 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class PlaceService {
   currAddress = new BehaviorSubject<string>(``);
+  private lat: number;
+  private lng: number;
 
   constructor() { }
 
-  getAddress(){
-    return this.currAddress.asObservable();
+  getLat(){
+    return this.lat;
   }
 
-  setAddress(address: string){
-    this.currAddress.next(address);
+  getLng(){
+    return this.lng;
+  }
+
+  setAddress(lat: number, lng:number){
+    // this.currAddress.next(address);
+    this.lat = lat;
+    this.lng = lng;
   }
 }

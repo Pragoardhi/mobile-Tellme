@@ -52,7 +52,7 @@ export class HomePage implements OnInit{
         }, {
           text: 'Okay',
           handler: () => {
-            this.userSvc.setUser(null, null);
+            this.authSvc.logout();
             this.router.navigateByUrl('/auth');
           }
         }
