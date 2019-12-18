@@ -1,0 +1,24 @@
+ion-toolbar {
+    --background: #f7bebe;
+}
+
+ion-label {
+    color: #000000;
+    opacity: .8;
+    font-size: 13px;
+    display: block;
+}
+
+[transparent] {
+    --background: transparent;
+}
+
+ion-input {
+    --color: #000000;
+    --padding-top: 15px;
+    --padding-bottom: 15px;
+    --padding-start: 5px;
+    font-size: 15px;
+    text-indent: 1px;
+    padding-left: 10px !important;
+}

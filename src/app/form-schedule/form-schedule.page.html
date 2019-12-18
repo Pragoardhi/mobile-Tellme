@@ -11,33 +11,38 @@
 
 <ion-content>
 
-  <ion-item>
-    <!-- title -->
-    <ion-label position="floating">Title</ion-label>
-    <ion-input [(ngModel)]="todo.title"></ion-input>
-  </ion-item>
-  <ion-item>
-    <!-- tanggal awal -->
-    <ion-label>Start Date</ion-label>
-    <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2005" max="2100" value="2019-10-27" [(ngModel)]="todo.startDate"></ion-datetime>
-  </ion-item>
-  <ion-item>
-    <!-- tanggal akhir -->
-    <ion-label>End Date</ion-label>
-    <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2005"max="2100" value="2019-10-28" [(ngModel)]="todo.endDate"></ion-datetime>
-  </ion-item>
-  <ion-item>
-      <!-- note -->
-      <ion-label position="floating">Note</ion-label>
-      <ion-input [(ngModel)]="todo.note"></ion-input>
-    </ion-item>
-  <br>
-  <app-location-picker text-center></app-location-picker>
-  <ion-label *ngIf="address" >Address: {{address}}</ion-label>
-  <br>
-  <div text-center>
-    <ion-button shape="round" fill="outline" color="danger" (click)="saveTodo()">Submit</ion-button>
-  </div>  
+    <div class="center">
+        <ion-card-content>
+            <!-- <form #f="ngForm" (ngSubmit)="saveTodo()"> -->
+                <ion-list>
+                    <ion-item transparent>
+                        <ion-label position="floating">Title</ion-label>
+                        <ion-input [(ngModel)]="todo.title"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Start Date</ion-label>
+                        <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2005" max="2100" value="2019-10-27" [(ngModel)]="todo.startDate"></ion-datetime>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label>End Date</ion-label>
+                        <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2005"max="2100" value="2019-10-28" [(ngModel)]="todo.endDate"></ion-datetime>
+                      </ion-item>
+                    <ion-item transparent>
+                        <ion-label position="floating">Note</ion-label>
+                        <ion-input [(ngModel)]="todo.note"></ion-input>
+                    </ion-item>
+                    <br>
+                      <app-location-picker text-center></app-location-picker>
+                      <ion-label *ngIf="address" >Address: {{address}}</ion-label>
+                      <br>
+                    <section>
+                        <ion-button size=" large " (click)="saveTodo()" type="submit " color="primary" class="ion-button-class" shape="round" fill="solid" expand="block">Submit</ion-button>
+                    </section>
+                </ion-list>
+                <br>
+            <!-- </form> -->
+        </ion-card-content>
+    </div>
     
 </ion-content>
 

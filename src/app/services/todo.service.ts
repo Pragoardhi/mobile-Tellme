@@ -16,9 +16,8 @@ export interface Todo{
 @Injectable({
   providedIn: 'root'
 })
-
 export class TodoService {
-  public i=1;
+
   private todoCollection: AngularFirestoreCollection<Todo>;
   private todos: Observable<Todo[]>;
 
@@ -27,8 +26,6 @@ export class TodoService {
 
     this.todos = this.todoCollection.snapshotChanges().pipe(
       map(actions => {
-        // this.i++;
-        // console.log("masuk ke:"+this.i);
         return actions.map(a => {
           const data = a.payload.doc.data();
           const id = a.payload.doc.id;
@@ -39,9 +36,6 @@ export class TodoService {
   }
 
   getTodos(){
-    
-    // this.i++;
-    // console.log("masuk ke" + this.i);
     return this.todos;
   }
 

@@ -14,8 +14,7 @@ export class HomePage implements OnInit{
 
   public isLogin =  this.userSvc.getUID();
   todos: Todo[];
-  tampung = [];
-  
+
   constructor(private alertController: AlertController, private todoSvc: TodoService, private userSvc: UserService, private router: Router, private authSvc: AuthService) {}
   
   ngOnInit(){
@@ -23,21 +22,11 @@ export class HomePage implements OnInit{
     if(this.isLogin == null){
       this.router.navigateByUrl('/auth');
     }
-      // console.log('masuk sini');
+      console.log('masuk sini');
       this.todoSvc.getTodos().subscribe(res => {
-        // console.log(res);  
+        
         this.todos = res;
       });
-      console.log(this.todos);
-    //  console.log(this.todoSvc.getTodos());
-  }
-
-  ionViewDidEnter(){
-    this.todoSvc.getTodos().subscribe(res => {
-        
-      this.todos = res;
-    });
-    
   }
 
   onForm(){
