@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/user.service';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -23,7 +24,7 @@ export class AuthService {
   userId: string;
   private _user = new BehaviorSubject<User>(null);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private userSvc: UserService) { }
 
   get isAuthenticate(){
     return this._user.asObservable().pipe(map(user => {
@@ -67,6 +68,7 @@ export class AuthService {
   }
 
   logout(){
+    this.userSvc.setUser(null, null);
     this._user.next(null);
   }
 
