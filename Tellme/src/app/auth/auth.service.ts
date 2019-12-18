@@ -69,4 +69,12 @@ export class AuthService {
   logout(){
     this._user.next(null);
   }
+
+  forgotPassword(email: string){
+    return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${environment.firebase.apiKey}`,
+    {
+      email,
+      requestType: "PASSWORD_RESET"
+    });
+  }
 }
