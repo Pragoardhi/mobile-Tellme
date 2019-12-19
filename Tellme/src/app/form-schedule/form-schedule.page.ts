@@ -18,7 +18,8 @@ export class FormSchedulePage implements OnInit {
     endDate: new Date().getDate(),
     note: '',
     lat: 0,
-    lng: 0
+    lng: 0,
+    address: ''
   }
 
   constructor(
@@ -53,8 +54,12 @@ export class FormSchedulePage implements OnInit {
   async saveTodo(){
     var lat = this.PlaceSvc.getLat();
     var lng = this.PlaceSvc.getLng();
+    var address = this.PlaceSvc.getAddName();
+    console.log(this.PlaceSvc.getAddName());
     this.todo.lat = lat;
     this.todo.lng = lng;
+    // this.todo.address = address;
+    // this.todo.address = address;
     if(this.todoId){
       this.todoService.updateTodo(this.todo, this.todoId).then(() => {
         this.navController.navigateBack('home');

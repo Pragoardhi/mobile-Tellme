@@ -11,6 +11,7 @@ export interface Todo{
   note: string;
   lat: number;
   lng: number;
+  address: string;
 }
 
 @Injectable({
@@ -22,7 +23,7 @@ export class TodoService {
   private todoCollection: AngularFirestoreCollection<Todo>;
   private todos: Observable<Todo[]>;
 
-  constructor(db: AngularFirestore, userSvc: UserService) {
+  constructor(private db: AngularFirestore,private userSvc: UserService) {
     this.todoCollection = db.collection<Todo>(userSvc.getUID());
 
     this.todos = this.todoCollection.snapshotChanges().pipe(
@@ -39,10 +40,20 @@ export class TodoService {
   }
 
   getTodos(){
-    
+    this.todoCollection = this.db.collection<Todo>(this.userSvc.getUID());
     // this.i++;
     // console.log("masuk ke" + this.i);
-    return this.todos;
+    return this.todoCollection.snapshotChanges().pipe(
+      map(actions => {
+        // this.i++;
+        // console.log("masuk ke:"+this.i);
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );;
   }
 
   getTodo(id){

@@ -12,4 +12,7 @@ export class UserService {
     getUID(){
         return this.uid;
     }
+    setUID(){
+        this.uid = null;
+    }
 }

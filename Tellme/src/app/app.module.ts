@@ -1,3 +1,4 @@
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { UserService } from './user.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,19 +15,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from './../environments/environment'; 
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
+    AngularFirestoreModule
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    UserService
+    UserService, LocalNotifications, NativeGeocoder
   ],
   bootstrap: [AppComponent]
 })
