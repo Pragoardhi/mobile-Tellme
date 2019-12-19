@@ -16,19 +16,23 @@
             <!-- <form #f="ngForm" (ngSubmit)="saveTodo()"> -->
                 <ion-list>
                     <ion-item transparent>
-                        <ion-label position="floating">Title</ion-label>
+                        <ion-label position="floating"><b>Title</b></ion-label>
                         <ion-input [(ngModel)]="todo.title"></ion-input>
                     </ion-item>
                     <ion-item>
-                        <ion-label>Start Date</ion-label>
-                        <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2005" max="2100" value="2019-10-27" [(ngModel)]="todo.startDate"></ion-datetime>
+                        <ion-label><b>Start Date</b></ion-label>
+                        <ion-input>
+                        <ion-datetime style="width: 100%; text-align: right;" displayFormat="DDDD MMM D, YYYY" min="2005" max="2100" value="2019-12-19" [(ngModel)]="todo.startDate"></ion-datetime>
+                      </ion-input>
                       </ion-item>
                       <ion-item>
-                        <ion-label>End Date</ion-label>
-                        <ion-datetime displayFormat="DDDD MMM D, YYYY" min="2005"max="2100" value="2019-10-28" [(ngModel)]="todo.endDate"></ion-datetime>
+                        <ion-label><b>End Date</b></ion-label>
+                        <ion-input>
+                        <ion-datetime style="width: 100%; text-align: right;" displayFormat="DDDD MMM D, YYYY" min="2005"max="2100" value="2019-12-20" [(ngModel)]="todo.endDate"></ion-datetime>
+                      </ion-input>
                       </ion-item>
                     <ion-item transparent>
-                        <ion-label position="floating">Note</ion-label>
+                        <ion-label position="floating"><b>Note</b></ion-label>
                         <ion-input [(ngModel)]="todo.note"></ion-input>
                     </ion-item>
                     <br>
